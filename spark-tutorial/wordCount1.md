@@ -1,4 +1,4 @@
-## 02: WordCount1
+## WordCount1
 
 이 인기있는 알고리즘을 사용하여 Spark의 [RDD](http://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.rdd)를 사용하여 데이터로 작업하는 관용구를 학습합니다. .RDD) API를 사용합니다.
 
