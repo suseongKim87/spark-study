@@ -206,6 +206,4 @@ val resultRDD = over50SoldAndAmountRDD.map {
 // resultRDD.collect.foreach(println)
 resultRDD.saveAsTextFile("/data/oct-nov-over-50-sold")
 //파일은 로컬 or hdfs에 저장된다.
-
-
 ```
