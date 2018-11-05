@@ -46,3 +46,17 @@ public class hive_strlen extends UDF {
 5. 다 만들어진 프로젝트를 maven install을 통해 jar 파일을 만들어 줍니다.
 
 6. 만들어지 jar 파일을 spark-shell을 시작하면서 추가해 줍니다.
+```{.scala}
+# .spark-shell --jars hive-udf-test.jar
+```
+
+다른 방법으로는 spark-shell 접속 후, [ :require ] 옵션을 사용해 추가하는 방법이 있습니다.
+
+```{.scala}
+사용법 => :require <path>          add a jar to the classpath
+scala> :require hive-udf-test.jar
+```
+
+위와 같이 작성한 후, "CREATE TEMPORARY FUNCTION"을 통해 import한 후, 사용하면 됩니다.
+
+
