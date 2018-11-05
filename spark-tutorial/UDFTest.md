@@ -1,5 +1,7 @@
-스파크 SQL의 udf(user defined function) 사용하기 
+### 스파크 SQL의 udf(user defined function) 사용하기
+
 UDF를 사용할 때, UDFRegistration의 register를 사용합니다. register는 2개의 매개변수를 받는데, 
+
 첫번째는 정의하려는 UDF의 이름, 두번째는 스칼라 함수로 넘겨진 스칼라 함수가 UDF의 본체롤 다뤄집니다.
 
 ```{.scala}
@@ -19,14 +21,14 @@ sqlContext.sql("SELECT stdlen('Hello 스파크 SQL') AS result_of_strlen").show
 
 아래는 hive UDF를 만드는 방법을 기술해 놓은 것 입니다. 
 
-1. java의 jar를 만들기 위해 maven을 사용해 프로젝트를 생성합니다.
+#### 1. java의 jar를 만들기 위해 maven을 사용해 프로젝트를 생성합니다.
 
-2. spark-core, spark-sql, hive-exec 의 dependency를 pom.xml파일에 등록해 줍니다.
+#### 2. spark-core, spark-sql, hive-exec 의 dependency를 pom.xml파일에 등록해 줍니다.
    (저는 spark-core(2.3.0), spark-sql(2.3.0), hive-exec(2.3.0) 버전을 사용했습니다.)
 
-3. package를 만들고 java 파일을 만들어 줍니다. (ex> com.spark.hive.sql.udf.hive_strlen.java)
+#### 3. package를 만들고 java 파일을 만들어 줍니다. (ex> com.spark.hive.sql.udf.hive_strlen.java)
 
-4. 아래의 코드와 같이 org.apache.hadoop.hive.ql.exec.UDF 를 상속받아 원하는 function을 만들어 줍니다.
+#### 4. 아래의 코드와 같이 org.apache.hadoop.hive.ql.exec.UDF 를 상속받아 원하는 function을 만들어 줍니다.
 ```{.java}
 package com.spark.hive.sql.udf;
 
@@ -43,9 +45,9 @@ public class hive_strlen extends UDF {
 }
 ```
 
-5. 다 만들어진 프로젝트를 maven install을 통해 jar 파일을 만들어 줍니다.
+#### 5. 다 만들어진 프로젝트를 maven install을 통해 jar 파일을 만들어 줍니다.
 
-6. 만들어지 jar 파일을 spark-shell을 시작하면서 추가해 줍니다.
+#### 6. 만들어지 jar 파일을 spark-shell을 시작하면서 추가해 줍니다.
 ```{.scala}
 # .spark-shell --jars hive-udf-test.jar
 ```
