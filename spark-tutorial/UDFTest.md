@@ -58,5 +58,25 @@ scala> :require hive-udf-test.jar
 ```
 
 위와 같이 작성한 후, "CREATE TEMPORARY FUNCTION"을 통해 import한 후, 사용하면 됩니다.
+```{.scala}
+import org.apache.spark.{SparkConf, SparkContext}
+import org.apache.spark.sql.hive.HiveContext
+import org.apache.spark.sql.functions._
 
+val conf = new SparkConf()
+val sc = new SparkContext(conf)
+val sqlContext = new HiveContext(sc)
 
+//UDF 등록
+sqlContext.sql("CREATE TEMPORARY FUNCTION hive_strlen AS 'com.spark.udf.test.JavaWordCount'")
+
+sqlContext.sql("SELECT hive_strlen('Hello Hive UDF') AS result_of_hive_strlen").show
+/*
+*** result ***
++---------------------+
+|result_of_hive_strlen|
++---------------------+
+|                   14|
++---------------------+
+*/
+```
